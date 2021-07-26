@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/styles/table.css}" rel="stylesheet"/>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Course Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Fees</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${courses.empty}">
+				<td colspan="2">No Users Added</td>
+			</tr>
+			<tr th:each="course : ${courses}">
+				<td><span th:text="${course.course_id}"></span></td>
+				<td><span th:text="${course.c_name}"></span></td>
+				<td><span th:text="${course.c_desc}"></span></td>
+				<td><span th:text="${course.c_fees}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

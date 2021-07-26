@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/styles/table.css}" rel="stylesheet"/>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Admin Id</th>
+				<th>Name</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${admins.empty}">
+				<td colspan="2">No Users Added</td>
+			</tr>
+			<tr th:each="admin : ${admins}">
+				<td><span th:text="${admin.admin_id}"></span></td>
+				<td><span th:text="${admin.name}"></span></td>
+				<td><span th:text="${admin.email}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

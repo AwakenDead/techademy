@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/styles/table.css}" rel="stylesheet"/>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Contact Id</th>
+				<th>User Id</th>
+				<th>Name</th>
+				<th>Phone No.</th>
+				<th>Email</th>
+				<th>Message</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${contacts.empty}">
+				<td colspan="2">No Users Added</td>
+			</tr>
+			<tr th:each="contact : ${contacts}">
+				<td><span th:text="${contact.contact_id}"></span></td>
+				<td><span th:text="${contact.user_id}"></span></td>
+				<td><span th:text="${contact.name}"></span></td>
+				<td><span th:text="${contact.phone_no}"></span></td>
+				<td><span th:text="${contact.email}"></span></td>
+				<td><span th:text="${contact.message}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

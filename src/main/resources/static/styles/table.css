@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+table, th, td {
+  border: 3px solid black;
+}
+
+th{
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+td{
+	padding: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
