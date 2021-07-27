@@ -12,7 +12,7 @@ public class FeedbackController {
 	@Autowired
 	FeedbackRepository feedbackRepo;
 	
-	@GetMapping("/showAllFeedbacks")
+	@GetMapping("/feedbackList")
 	public String findAll(Model model) {
 		model.addAttribute("feedbacks", feedbackRepo.findAll());
 		return "feedbackList";

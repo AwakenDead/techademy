@@ -2,10 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Home Page</title>
 <link th:href="@{/styles/table.css}" rel="stylesheet"/>
+<link th:href="@{/styles/nav.css}" rel="stylesheet"/>
 </head>
 <body>
+	<h1> E-Learning </h1>
+	<div class="size">	
+		<span><a href="/">Home</a></span>
+		
+		<span><a href="/userList">User</a></span>
+		
+		<span><a href="/adminList">Admin</a></span>
+		
+		<span><a href="/courseList">Courses</a></span>
+		
+		<span><a href="/feedbackList">Feedbacks</a></span>
+		
+		<span><a href="/contactList">Contacts</a></span>
+		
+		<hr/>
+		<hr/>
+	</div>
+	
+	<h2>User</h2>
+	
 	<table>
 		<thead>
 			<tr>
@@ -15,6 +36,8 @@
 				<th>Email</th>
 				<th>Address</th>
 				<th>Registration Date</th>
+				<th>Update</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,8 +51,12 @@
 				<td><span th:text="${user.email}"></span></td>
 				<td><span th:text="${user.address}"></span></td>
 				<td><span th:text="${user.reg_date}"></span></td>
+				<td><a th:href="@{'updateUser/' + ${user.user_id}}">Update</a></td>
+				<td><a th:href="@{'deleteUser/' + ${user.user_id}}">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>
+	
+	<p><a href="newUserForm" >Add new User</a></p>
 </body>
 </html>

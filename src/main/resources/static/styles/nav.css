@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+span {
+	padding: 10px;
+	margin: 10px;
+}
+a{
+	color: green;
+	text-decoration:none;
+}
+
+.size{
+	font-size: 1.25rem;
+}

@@ -12,7 +12,7 @@ public class ContactController {
 	@Autowired
 	ContactRepository contactRepo;
 	
-	@GetMapping("/showAllContacts")
+	@GetMapping("/contactList")
 	public String findAll(Model model) {
 		model.addAttribute("contacts", contactRepo.findAll());
 		return "contactList";
