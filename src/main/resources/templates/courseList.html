@@ -19,8 +19,6 @@
 		
 		<span><a href="/feedbackList">Feedbacks</a></span>
 		
-		<span><a href="/contactList">Contacts</a></span>
-		
 		<hr/>
 		<hr/>
 	</div>
@@ -40,14 +38,14 @@
 		</thead>
 		<tbody>
 			<tr th:if="${courses.empty}">
-				<td colspan="2">No Users Added</td>
+				<td colspan="2">No Courses Added</td>
 			</tr>
 			<tr th:each="course : ${courses}">
 				<td><span th:text="${course.course_id}"></span></td>
 				<td><span th:text="${course.c_name}"></span></td>
 				<td><span th:text="${course.c_desc}"></span></td>
 				<td><span th:text="${course.c_fees}"></span></td>
-				<td><a th:href="@{'updateCourse/' + ${course.course_id}}">Update</a></td>
+				<td><a th:href="@{'updateCourseForm/' + ${course.course_id}}">Update</a></td>
 				<td><a th:href="@{'deleteCourse/' + ${course.course_id}}">Delete</a></td>
 			</tr>
 		</tbody>

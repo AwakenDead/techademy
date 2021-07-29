@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.akhilesh.techademy.entity.Admin;
@@ -28,8 +29,43 @@ public class AdminController {
 	}
 	
 	@PostMapping("/createAdmin")
-	public String createAdmin(@ModelAttribute("admin") Admin admin) {
-		System.out.println(admin.toString());
+	public String createAdmin(@ModelAttribute("admin") Admin admin, Model model) {
+		try {
+			adminRepo.save(admin);
+			model.addAttribute("message", "Admin creation successful.");
+		}catch(Exception e){
+			model.addAttribute("message", "Some Error Occured");
+		}
+		return "status";
+	}
+	
+	@GetMapping("/updateAdminForm/{admin_id}")
+	public String updateAdminForm(Model model, @PathVariable("admin_id") int id) {
+		model.addAttribute("admin", adminRepo.getById(id));
+		
+		return "updateAdminForm";
+	}
+	
+	@PostMapping("/updateAdmin")
+	public String updateAdmin(@ModelAttribute("admin") Admin admin, Model model) {
+//		System.out.println(admin);
+		try {
+			adminRepo.save(admin);
+			model.addAttribute("message", "Admin update operation successful.");
+		}catch(Exception e){
+			model.addAttribute("message", "Some Error Occured");
+		}
+		return "status";
+	}
+	
+	@GetMapping("/deleteAdmin/{admin_id}")
+	public String deleteAdmin(@PathVariable("admin_id") int id, Model model) {
+		try {
+			adminRepo.deleteById(id);
+			model.addAttribute("message", "Admin deletion successful.");
+		}catch(Exception e){
+			model.addAttribute("message", "Some Error Occured");
+		}
 		return "status";
 	}
 }

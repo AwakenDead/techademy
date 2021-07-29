@@ -20,8 +20,6 @@
 		
 		<span><a href="/feedbackList">Feedbacks</a></span>
 		
-		<span><a href="/contactList">Contacts</a></span>
-		
 		<hr/>
 		<hr/>
 	</div>
@@ -33,21 +31,19 @@
 				<th>Admin Id</th>
 				<th>Name</th>
 				<th>Email</th>
-				<th>Password</th>
 				<th>Update</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:if="${admins.empty}">
-				<td colspan="2">No Users Added</td>
+				<td colspan="2">No Admin Added</td>
 			</tr>
 			<tr th:each="admin : ${admins}">
 				<td><span th:text="${admin.admin_id}"></span></td>
 				<td><span th:text="${admin.name}"></span></td>
 				<td><span th:text="${admin.email}"></span></td>
-				<td><span th:text="${admin.password}"></span></td>
-				<td><a th:href="@{'updateAdmin/' + ${admin.admin_id}}">Update</a></td>
+				<td><a th:href="@{'updateAdminForm/' + ${admin.admin_id}}">Update</a></td>
 				<td><a th:href="@{'deleteAdmin/' + ${admin.admin_id}}">Delete</a></td>
 			</tr>
 		</tbody>

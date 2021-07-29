@@ -1,15 +1,36 @@
 package com.akhilesh.techademy.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="contact")
+@Table(name = "contact")
 public class Contact {
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "contact_id", nullable = false)
 	int contact_id;
-	int user_id;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	String name, email, phone_no, message;
 
 	public int getContact_id() {
@@ -18,14 +39,6 @@ public class Contact {
 
 	public void setContact_id(int contact_id) {
 		this.contact_id = contact_id;
-	}
-
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
 	}
 
 	public String getName() {
@@ -62,7 +75,7 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [contact_id=" + contact_id + ", user_id=" + user_id + ", name=" + name + ", email=" + email
-				+ ", phone_no=" + phone_no + ", message=" + message + "]";
+		return "Contact [contact_id=" + contact_id + ", name=" + name + ", email=" + email + ", phone_no=" + phone_no
+				+ ", message=" + message + "]";
 	}
 }

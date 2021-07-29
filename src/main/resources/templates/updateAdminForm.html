@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>New Course Form</title>
+<title>Update Admin Form</title>
 <link th:href="@{/styles/table.css}" rel="stylesheet"/>
 <link th:href="@{/styles/nav.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1> E-Learning </h1>
+	<h1> E-Learning </h1>
 	<div class="size">	
 		<span><a href="/">Home</a></span>
 		
@@ -23,24 +23,24 @@
 		<hr/>
 	</div>
 	
-	<h2>New Course Form</h2>
-	<form action="#" th:action="@{/createCourse}" th:object="${course}" method="post" enctype="multipart/form-data">
+	<h2>New Admin Form</h2>
+	<form action="#" th:action="@{/updateAdmin}" th:object="${admin}" method="post">
 		<table>
 			<tr>
+				<th>Admin Id</th>
+				<td> <input  readonly type="text" th:field="*{admin_id}" /></td>
+			</tr>
+			<tr>
 				<th>Name</th>
-				<td> <input type="text" th:field="*{c_name}" /></td>
+				<td> <input type="text" th:field="*{name}" /></td>
 			</tr>
 			<tr>
-				<th>Course Description</th>
-				<td> <input type="text" th:field="*{c_desc}" /></td>
+				<th>E-mail</th>
+				<td> <input type="text" th:field="*{email}" /></td>
 			</tr>
 			<tr>
-				<th>Fees</th>
-				<td> <input type="text" th:field="*{c_fees}" /></td>
-			</tr>
-			<tr>
-				<th>Photo</th>
-				<td> <input type="file" name="image" accept="image/*"></td> 
+				<th>Password</th> 
+				<td><input type="text" th:field="*{password}" /></td>
 			</tr>
 		</table>
 		<input style="margin:10px; padding:10px;" type="submit" value="Submit" />

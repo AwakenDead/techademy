@@ -19,8 +19,6 @@
 		
 		<span><a href="/feedbackList">Feedbacks</a></span>
 		
-		<span><a href="/contactList">Contacts</a></span>
-		
 		<hr/>
 		<hr/>
 	</div>
@@ -31,7 +29,6 @@
 		<thead>
 			<tr>
 				<th>Feedback Id</th>
-				<th>User Id</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Feedback</th>
@@ -39,14 +36,13 @@
 		</thead>
 		<tbody>
 			<tr th:if="${feedbacks.empty}">
-				<td colspan="2">No Users Added</td>
+				<td colspan="2">No Feedbacks Yet</td>
 			</tr>
 			<tr th:each="f : ${feedbacks}">
 				<td><span th:text="${f.f_id}"></span></td>
-				<td><span th:text="${f.user_id}"></span></td>
 				<td><span th:text="${f.name}"></span></td>
 				<td><span th:text="${f.email}"></span></td>
-				<td><span th:text="${f.feedback}"></span></td>
+				<td><span th:text="${f.fb}"></span></td>
 			</tr>
 		</tbody>
 	</table>

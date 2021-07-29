@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Profile</title>
+<link th:href="@{/styles/table.css}" rel="stylesheet"/>
+<link th:href="@{/styles/nav.css}" rel="stylesheet"/>
+</head>
+
+<body>
+	<h1> E-Learning </h1>
+	<div class="size">	
+		<span><a href="/">Home</a></span>
+		
+		<span><a href="/userList">User</a></span>
+		
+		<span><a href="/adminList">Admin</a></span>
+		
+		<span><a href="/courseList">Courses</a></span>
+		
+		<span><a href="/feedbackList">Feedbacks</a></span>
+		
+		<hr/>
+		<hr/>
+	</div>
+	
+	<h2>Profile</h2>
+	
+	<img width="20%" th:src="@{'/images/' + ${user.photo}}"/>
+	<table>
+		<tr>
+			<th>User Id</th>
+			<td><span th:text="${user.user_id}"></span></td>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<td><span th:text="${user.name}"></span></td>
+		</tr>
+		<tr>
+			<th>Phone No.</th>
+			<td><span th:text="${user.phone_no}"></span></td>
+		</tr>
+		<tr>
+			<th>E-mail</th>
+			<td><span th:text="${user.email}"></span></td>
+		</tr>
+		<tr>
+			<th>Address</th> 
+			<td><span th:text="${user.address}"></span></td>
+		</tr>
+		<tr>
+			<th>Registration Date</th>
+			<td><span th:text="${user.reg_date}"></span></td>
+		</tr>
+		<tr>
+			<th>Photo</th>
+			<td><span th:text="${user.photo}"></span></td>
+		</tr>
+		<!-- <tr>
+			<th>Photo</th>
+			<td> <input type="file" name="image" accept="image/*"></td> 
+		</tr> -->
+	</table>
+	
+	<hr/>
+	
+	<h2>Contacts</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Contact Id</th>
+				<th>Name</th>
+				<th>Phone No.</th>
+				<th>Email</th>
+				<th>Message</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${contacts.empty}">
+				<td colspan="2">No Contacts</td>
+			</tr>
+			<tr th:each="contact : ${contacts}">
+				<td><span th:text="${contact.contact_id}"></span></td>
+				<td><span th:text="${contact.name}"></span></td>
+				<td><span th:text="${contact.phone_no}"></span></td>
+				<td><span th:text="${contact.email}"></span></td>
+				<td><span th:text="${contact.message}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<hr/>
+	
+	<h2>Feedbacks</h2>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Feedback Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Feedback</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${feedbacks.empty}">
+				<td colspan="2">No Feedbacks Added</td>
+			</tr>
+			<tr th:each="f : ${feedbacks}">
+				<td><span th:text="${f.f_id}"></span></td>
+				<td><span th:text="${f.name}"></span></td>
+				<td><span th:text="${f.email}"></span></td>
+				<td><span th:text="${f.fb}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

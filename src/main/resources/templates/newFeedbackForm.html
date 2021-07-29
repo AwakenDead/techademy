@@ -2,40 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>New Feedback Form</title>
 <link th:href="@{/styles/table.css}" rel="stylesheet"/>
+<link th:href="@{/styles/nav.css}" rel="stylesheet"/>
 </head>
 <body>
-	<h1>New User Form</h1>
-	<form action="#" th:action="@{/createUser}" th:object="${user}" method="post" enctype="multipart/form-data">
+	<h1> E-Learning </h1>
+	<div class="size">	
+		<span><a href="/">Home</a></span>
+		
+		<span><a href="/userList">User</a></span>
+		
+		<span><a href="/adminList">Admin</a></span>
+		
+		<span><a href="/courseList">Courses</a></span>
+		
+		<span><a href="/feedbackList">Feedbacks</a></span>
+		
+		<hr/>
+		<hr/>
+	</div>
+	
+	<h2>New Feedback Form</h2>
+	<form action="#" th:action="@{'/createFeedback/' + ${user_id}}" th:object="${f}" method="post">
 		<table>
 			<tr>
-				<th>Id</th> 
-				<td><input type="text" th:field="*{user_id}" /></td>
-			</tr>
-			<tr>
 				<th>Name</th>
-				<td> <input type="text" th:field="*{name}" /></td>
-			</tr>
-			<tr>
-				<th>Phone No.</th>
-				<td> <input type="text" th:field="*{phone_no}" /></td>
+				<td> <input readonly type="text" th:field="*{name}" /></td>
 			</tr>
 			<tr>
 				<th>E-mail</th>
-				<td> <input type="text" th:field="*{email}" /></td>
+				<td> <input readonly type="text" th:field="*{email}" /></td>
 			</tr>
 			<tr>
-				<th>Password</th> 
-				<td><input type="text" th:field="*{password}" /></td>
-			</tr>
-			<tr>
-				<th>Address</th> 
-				<td><textarea th:field="*{address}" rows="3" cols="25"></textarea></td>
-			</tr>
-			<tr>
-				<th>Photo</th>
-				<td> <input type="file" name="image" accept="image/*"></td> 
+				<th>Feedback</th>
+				<td> <textarea th:field="*{fb}"  rows="3" cols="25"></textarea></td>
 			</tr>
 		</table>
 		<input style="margin:10px; padding:10px;" type="submit" value="Submit" />

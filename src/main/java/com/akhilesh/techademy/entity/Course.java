@@ -1,15 +1,29 @@
 package com.akhilesh.techademy.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="course")
+@Table(name = "course")
 public class Course {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "course_id", nullable = false)
 	int course_id;
+
+	public String getC_resource() {
+		return c_resource;
+	}
+
+	public void setC_resource(String c_resource) {
+		this.c_resource = c_resource;
+	}
+
 	String c_name, c_desc;
 	double c_fees;
 	String c_resource;
@@ -48,7 +62,8 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [course_id=" + course_id + ", c_name=" + c_name + ", c_desc=" + c_desc + ", fees=" + c_fees + "]";
+		return "Course [course_id=" + course_id + ", c_name=" + c_name + ", c_desc=" + c_desc + ", fees=" + c_fees
+				+ "]";
 	}
 
 }

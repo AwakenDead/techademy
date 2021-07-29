@@ -19,8 +19,6 @@
 		
 		<span><a href="/feedbackList">Feedbacks</a></span>
 		
-		<span><a href="/contactList">Contacts</a></span>
-		
 		<hr/>
 		<hr/>
 	</div>
@@ -38,11 +36,14 @@
 				<th>Registration Date</th>
 				<th>Update</th>
 				<th>Delete</th>
+				<th>Feedback</th>
+				<th>Contact</th>
+				<th>Profile</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:if="${users.empty}">
-				<td colspan="2">No Users Added</td>
+				<td colspan="2">No Users Yet</td>
 			</tr>
 			<tr th:each="user : ${users}">
 				<td><span th:text="${user.user_id}"></span></td>
@@ -51,8 +52,11 @@
 				<td><span th:text="${user.email}"></span></td>
 				<td><span th:text="${user.address}"></span></td>
 				<td><span th:text="${user.reg_date}"></span></td>
-				<td><a th:href="@{'updateUser/' + ${user.user_id}}">Update</a></td>
+				<td><a th:href="@{'updateUserForm/' + ${user.user_id}}">Update</a></td>
 				<td><a th:href="@{'deleteUser/' + ${user.user_id}}">Delete</a></td>
+				<td><a th:href="@{'newFeedbackForm/' + ${user.user_id}}">Add Feedback</a></td>
+				<td><a th:href="@{'newContactForm/'  + ${user.user_id}}">Add Contact</a></td>
+				<td><a th:href="@{'userProfile/' + ${user.user_id}}">Profile</a></td>
 			</tr>
 		</tbody>
 	</table>

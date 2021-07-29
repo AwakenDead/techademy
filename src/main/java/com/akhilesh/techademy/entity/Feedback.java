@@ -1,18 +1,29 @@
 package com.akhilesh.techademy.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="feedback")
+@Table(name = "feedback")
 public class Feedback {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "f_id", nullable = false)
 	int f_id;
-	
-	int user_id;
-	String name, email, feedback;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
+
+	String name, email, fb;
 
 	public int getF_id() {
 		return f_id;
@@ -22,13 +33,13 @@ public class Feedback {
 		this.f_id = f_id;
 	}
 
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
+//	public int getUser_id() {
+//		return user_id;
+//	}
+//
+//	public void setUser_id(int user_id) {
+//		this.user_id = user_id;
+//	}
 
 	public String getName() {
 		return name;
@@ -42,22 +53,29 @@ public class Feedback {
 		return email;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getFeedback() {
-		return feedback;
+	public String getFb() {
+		return fb;
 	}
 
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
+	public void setFb(String feedback) {
+		this.fb = feedback;
 	}
 
 	@Override
 	public String toString() {
-		return "Feedback [f_id=" + f_id + ", user_id=" + user_id + ", name=" + name + ", email=" + email + ", feedback="
-				+ feedback + "]";
+		return "Feedback [f_id=" + f_id + ", name=" + name + ", email=" + email + ", feedback=" + fb + "]";
 	}
 
 }
